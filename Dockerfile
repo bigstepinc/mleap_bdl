@@ -15,6 +15,8 @@ ADD entrypoint.sh /
 
 RUN chmod 777 /entrypoint.sh
 
+ENV PATH /opt/bigstepdatalake-0.11.1/bin:$PATH
+
 EXPOSE 65327
 
 ENTRYPOINT ["/entrypoint.sh"]
