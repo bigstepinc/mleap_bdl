@@ -13,6 +13,8 @@ ADD core-site.xml.apiKey /opt/bigstepdatalake-0.11.1/conf
 
 ADD entrypoint.sh /
 
+RUN chmod 777 /entrypoint.sh
+
 EXPOSE 65327
 
 ENTRYPOINT ["/entrypoint.sh"]
