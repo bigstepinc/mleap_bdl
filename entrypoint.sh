@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "$AUTH_METHOD" == "apikey" ]; then
 	mv /opt/bigstepdatalake-0.11.1/conf/core-site.xml.apiKey /opt/bigstepdatalake-0.11.1/conf/core-site.xml
 	if [ "$AUTH_APIKEY" != "" ]; then
