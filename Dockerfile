@@ -12,8 +12,10 @@ RUN cd /opt && \
 ADD core-site.xml.apiKey /opt/bigstepdatalake-0.11.1/conf
 
 ADD entrypoint.sh /
+ADD model_loader.sh /
 
 RUN chmod 777 /entrypoint.sh
+RUN chmod 777 /model_loader.sh
 
 ENV PATH /opt/bigstepdatalake-0.11.1/bin:$PATH
 
