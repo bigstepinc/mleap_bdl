@@ -2,10 +2,12 @@
 
 counter="0"
 
+MODEL_BDL_FILE=`basename $MODEL_BDL_PATH`
+
 while [ $counter -lt 10 ]
 do
 echo "Trying to load the model, try $counter" >> /tmp/model_load
-curl -XPUT -H "content-type: application/json"   -d "{\"path\":\"/models/$MODEL_BDL_PATH\"}" http://localhost:65327/model
+curl -XPUT -H "content-type: application/json"   -d "{\"path\":\"/models/$MODEL_BDL_FILE\"}" http://localhost:65327/model
 result=$?
 if [ $result -eq 0 ]; then
 	echo "Succesfully loaded the model" >> /tmp/model_load

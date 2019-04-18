@@ -18,7 +18,7 @@ fi
 
 mkdir /models
 
-bdl -get $MODEL_BDL_PATH /models/$MODEL_BDL_PATH
+bdl -get $MODEL_BDL_PATH /models/
 
 /model_loader.sh &
 
