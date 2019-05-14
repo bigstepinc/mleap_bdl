@@ -11,9 +11,11 @@ RUN cd /opt && \
 	
 ADD core-site.xml.apiKey /opt/bigstepdatalake-0.11.1/conf
 
+ADD readyness_probe.sh /
 ADD entrypoint.sh /
 ADD model_loader.sh /
 
+RUN chmod 777 /readyness_probe.sh
 RUN chmod 777 /entrypoint.sh
 RUN chmod 777 /model_loader.sh
 
