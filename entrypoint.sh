@@ -1,18 +1,23 @@
 #!/bin/bash
 
+echo 'export BDLCL_VERSION=0.14.1' >> ~/.bashrc
+echo 'export BDL_HOME="/opt/bigstepdatalake-$BDLCL_VERSION"' >> ~/.bashrc
+
+source  ~/.bashrc
+
 if [ "$AUTH_METHOD" == "apikey" ]; then
-	mv /opt/bigstepdatalake-0.11.1/conf/core-site.xml.apiKey /opt/bigstepdatalake-0.11.1/conf/core-site.xml
+	mv $BDL_HOME/conf/core-site.xml.apiKey $BDL_HOME/conf/core-site.xml
 	if [ "$AUTH_APIKEY" != "" ]; then
-		sed "s/AUTH_APIKEY/$AUTH_APIKEY/" /opt/bigstepdatalake-0.11.1/conf/core-site.xml >> /opt/bigstepdatalake-0.11.1/conf/core-site.xml.tmp && \
-		mv /opt/bigstepdatalake-0.11.1/conf/core-site.xml.tmp /opt/bigstepdatalake-0.11.1/conf/core-site.xml
+		sed "s/AUTH_APIKEY/$AUTH_APIKEY/" $BDL_HOME/conf/core-site.xml >> $BDL_HOME/conf/core-site.xml.tmp && \
+		mv $BDL_HOME/conf/core-site.xml.tmp $BDL_HOME/conf/core-site.xml
 	fi
 	if [ "$API_ENDPOINT" != "" ]; then
-		sed "s/API_ENDPOINT/${API_ENDPOINT//\//\\/}/" /opt/bigstepdatalake-0.11.1/conf/core-site.xml >> /opt/bigstepdatalake-0.11.1/conf/core-site.xml.tmp && \
-		mv /opt/bigstepdatalake-0.11.1/conf/core-site.xml.tmp /opt/bigstepdatalake-0.11.1/conf/core-site.xml
+		sed "s/API_ENDPOINT/${API_ENDPOINT//\//\\/}/" $BDL_HOME/conf/core-site.xml >> $BDL_HOME/conf/core-site.xml.tmp && \
+		mv $BDL_HOME/conf/core-site.xml.tmp $BDL_HOME/conf/core-site.xml
 	fi
 	if [ "$BDL_DEFAULT_PATH" != "" ]; then
-		sed "s/BDL_DEFAULT_PATH/${BDL_DEFAULT_PATH//\//\\/}/" /opt/bigstepdatalake-0.11.1/conf/core-site.xml >> /opt/bigstepdatalake-0.11.1/conf/core-site.xml.tmp && \
-		mv /opt/bigstepdatalake-0.11.1/conf/core-site.xml.tmp /opt/bigstepdatalake-0.11.1/conf/core-site.xml
+		sed "s/BDL_DEFAULT_PATH/${BDL_DEFAULT_PATH//\//\\/}/" $BDL_HOME/conf/core-site.xml >> $BDL_HOME/conf/core-site.xml.tmp && \
+		mv $BDL_HOME/conf/core-site.xml.tmp $BDL_HOME/conf/core-site.xml
 	fi
 fi
 
